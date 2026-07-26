@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lintul3-gym"
+version = "0.1.0"
+description = "A transparent, reproducible Gymnasium environment for LINTUL3 nitrogen-management reinforcement learning."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Collins Patrick Ohagwu" }]
+keywords = ["agriculture", "crop-model", "gymnasium", "lintul3", "reinforcement-learning"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+  "gymnasium==1.3.0",
+  "numpy==2.3.0",
+  "pcse==6.0.13",
+]
+
+[project.optional-dependencies]
+sb3 = ["stable-baselines3==2.9.0"]
+viz = ["matplotlib==3.11.0"]
+test = ["pytest==8.4.2"]
+docs = ["sphinx==8.2.3"]
+
+[project.urls]
+Documentation = "https://github.com/cpohagwu/lintul3-gym#readme"
+Repository = "https://github.com/cpohagwu/lintul3-gym"
+
+[tool.hatch.build]
+include = ["lintul3_gym/**/*.py", "lintul3_gym/envs/data/**/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"

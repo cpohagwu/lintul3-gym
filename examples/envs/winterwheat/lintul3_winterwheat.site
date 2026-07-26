@@ -1,0 +1,17 @@
+# Site parameters for the CropGym/PCSE-Gym nitrogen-winterwheat use case (Kallenberg et al. 2023).
+# Source: https://github.com/WUR-AI/PCSE-Gym/blob/master/pcse_gym/envs/configs/site/lintul3_springwheat.site
+# (upstream keeps the "springwheat" filename even though these values are the ones used for the
+# winter-wheat experiments; WCI/WCSUBS differ from examples/envs/springwheat's site file).
+#
+# initial soil conditions
+WCI    = 0.30 			# Initial water content in cm3 of water/(cm3 of soil).
+WCSUBS = 0.20 			# water content subsoil
+
+# Water management
+# We will represent two water management situations in the model
+# as irrigated up to the field capacity:  WMFAC = False
+# as irrigated up to saturation, thus mimicking flooding; WMFAC = True
+# In both cases parameter IRRIGF must be taken 1.0. "Irrigation" thus
+WMFAC  = False
+IRRIGF = False			# Irrigation factor
+WMTAB = True			# Only used by PCSE-Gym's patched Lintul3Soil (irrigation-table signal); ignored by stock pcse

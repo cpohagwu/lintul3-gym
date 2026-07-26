@@ -1,0 +1,31 @@
+# Reference crop calendar for the CropGym/PCSE-Gym nitrogen-winterwheat use case
+# (Kallenberg et al. 2023, https://doi.org/10.1017/eds.2023.28), translated from
+# https://github.com/WUR-AI/PCSE-Gym/blob/master/pcse_gym/envs/configs/agro/agromanagement_fertilization.yaml
+#
+# lintul3_gym.Lintul3Env does not read this file directly -- it builds the same calendar in
+# code from a SeasonConfig (see lintul3_gym/envs/environment.py:build_agromanagement). Pass the
+# matching SeasonConfig when using this data_dir, e.g.:
+#
+#   from datetime import date
+#   from lintul3_gym import Lintul3Env, SeasonConfig, WeatherConfig
+#   season = SeasonConfig(
+#       campaign_start=date(2007, 1, 1), crop_start=date(2007, 1, 1),
+#       crop_end=date(2007, 9, 1), crop_name="winter-wheat",
+#       crop_start_type="emergence", crop_end_type="earliest", max_duration=365,
+#   )
+#   env = Lintul3Env(data_dir=..., season=season, weather=WeatherConfig(source="nasa", ...))
+#
+# TimedEvents is null because the paper's RL agent decides all nitrogen applications itself
+# (a weekly dose in {0, 20, 40} kg N/ha); there is no fixed fertilization table to replicate.
+Version: 1.0
+AgroManagement:
+- 2007-01-01:
+    CropCalendar:
+        crop_name: winter-wheat
+        crop_start_date: 2007-01-01
+        crop_start_type: emergence
+        crop_end_date: 2007-09-01
+        crop_end_type: earliest
+        max_duration: 365
+    TimedEvents: null
+    StateEvents: null

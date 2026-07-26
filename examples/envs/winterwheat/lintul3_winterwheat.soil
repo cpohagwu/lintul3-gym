@@ -1,0 +1,11 @@
+# Soil parameters for the CropGym/PCSE-Gym nitrogen-winterwheat use case (Kallenberg et al. 2023).
+# Source: https://github.com/WUR-AI/PCSE-Gym/blob/master/pcse_gym/envs/configs/soil/lintul3_springwheat.soil
+# (identical values to examples/envs/springwheat's soil file; only the site file differs.)
+#
+# Soil hydraulic properties
+WCAD   = 0.10
+WCWP   = 0.20
+WCFC   = 0.40
+WCWET  = 0.45
+WCST   = 0.50
+DRATE  = 30.  			# Maximum drainage rate of the soil (mm/day) 
