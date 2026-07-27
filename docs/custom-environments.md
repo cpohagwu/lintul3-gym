@@ -25,7 +25,7 @@ season = SeasonConfig(
     crop_end=date(2007, 9, 1), crop_name="winter-wheat",
     crop_start_type="emergence", crop_end_type="earliest", max_duration=365,
 )
-env = Lintul3Env(data_dir="examples/envs/winterwheat", season=season, decision_interval=7)
+env = Lintul3Env(data_dir="lintul3_gym/envs/data/winterwheat", season=season, decision_interval=7)
 ```
 
 `SeasonConfig` mirrors a PCSE `.agro` file's `CropCalendar` section (campaign start, crop
@@ -35,9 +35,9 @@ actions rather than a fixed `TimedEvents` schedule.
 
 ## Worked examples in this repo
 
-- [`examples/envs/springwheat/`](../examples/envs/springwheat) -- the bundled default (Netherlands,
+- [`lintul3_gym/envs/data/springwheat/`](../lintul3_gym/envs/data/springwheat) -- the bundled default (Netherlands,
   2006); see `examples/nitrogen-springwheat/Tutorial-Lintul3gym.ipynb` for the full walkthrough.
-- [`examples/envs/winterwheat/`](../examples/envs/winterwheat) -- winter wheat (Netherlands +
+- [`lintul3_gym/envs/data/winterwheat/`](../lintul3_gym/envs/data/winterwheat) -- winter wheat (Netherlands +
   France, 1990-2021), reproducing [Kallenberg et al. (2023)](https://doi.org/10.1017/eds.2023.28);
   see its own `README.md` for full parameter provenance and a model-fidelity discussion, and
   `examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb` for the matching notebook.

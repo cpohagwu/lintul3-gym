@@ -9,7 +9,7 @@ it loads the packaged 2006 spring-wheat scenario (Netherlands, bundled Excel wea
 - **`data_dir`** -- a directory containing exactly one `*.crop`, one `*.site`, and one `*.soil`
   file (any filename -- discovered by extension, not a fixed name), and optionally an `nl1.xlsx`
   for Excel weather. See [Custom environments](custom-environments.md) for the full pattern,
-  including the two worked examples shipped under `examples/envs/`.
+  including the two worked examples shipped under `lintul3_gym/envs/data/`.
 - **`season`** -- a `SeasonConfig` describing the crop calendar (campaign start, crop start/end
   dates and types, `max_duration`). This replaces a PCSE `.agro` file's `CropCalendar` section;
   nitrogen application stays entirely under the agent's control -- an `.agro` file's fertilizer

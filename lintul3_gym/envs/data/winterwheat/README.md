@@ -8,15 +8,15 @@ LINTUL3 input files for the rain-fed winter-wheat nitrogen use case described in
 
 (see `examples/nitrogen-winterwheat/Paper-Cropgym.pdf`), copied from the paper's reference
 implementation, [WUR-AI/PCSE-Gym](https://github.com/WUR-AI/PCSE-Gym/tree/master) (`master`
-branch). This is the dataset the paper calibrated -- distinct from `examples/envs/springwheat`, which was downloaded from [PCSE/LINTUL3 simulation example](https://pcse.readthedocs.io/en/stable/user_guide.html#running-a-simulation-with-pcse-lintul3).
+branch). This is the dataset the paper calibrated -- distinct from `lintul3_gym/envs/data/springwheat`, which was downloaded from [PCSE/LINTUL3 simulation example](https://pcse.readthedocs.io/en/stable/user_guide.html#running-a-simulation-with-pcse-lintul3).
 
 ## Files and their source
 
 | File | Copied from (WUR-AI/PCSE-Gym) |
 | --- | --- |
 | `lintul3_winterwheat.crop` | `pcse_gym/envs/configs/crop/lintul3_winterwheat.crop` |
-| `lintul3_winterwheat.site` | `pcse_gym/envs/configs/site/lintul3_springwheat.site` (upstream keeps the "springwheat" name, but these are the values used for the winter-wheat runs -- `WCI`/`WCSUBS` differ from `examples/envs/springwheat`'s site file) |
-| `lintul3_winterwheat.soil` | `pcse_gym/envs/configs/soil/lintul3_springwheat.soil` (identical values to `examples/envs/springwheat`'s soil file) |
+| `lintul3_winterwheat.site` | `pcse_gym/envs/configs/site/lintul3_springwheat.site` (upstream keeps the "springwheat" name, but these are the values used for the winter-wheat runs -- `WCI`/`WCSUBS` differ from `lintul3_gym/envs/data/springwheat`'s site file) |
+| `lintul3_winterwheat.soil` | `pcse_gym/envs/configs/soil/lintul3_springwheat.soil` (identical values to `lintul3_gym/envs/data/springwheat`'s soil file) |
 | `lintul3_winterwheat.agro` | `pcse_gym/envs/configs/agro/agromanagement_fertilization.yaml`, translated to this package's agro format (reference only -- see below) |
 | `pcse-lintul3.patch` | `notebooks/nitrogen-winterwheat/pcse-lintul3.patch` -- the patch against `ajwdewit/pcse` this dataset's parameters were calibrated against; kept here for reference. See "Model-fidelity caveat" below. |
 
@@ -25,7 +25,7 @@ files) and only annotated with source-comment headers.
 
 ## Reproduction notebook
 
-[`examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb`](../../nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb)
+[`examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb`](../../../../examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb)
 trains and evaluates against this dataset end-to-end (NASA POWER weather, the paper's train/test
 locations and years, a `StandardPracticePolicy` baseline from `lintul3_gym.policies`, and a
 Figure-4-style nitrogen-vs-rainfall plot). It supersedes the paper's own reference notebook,
@@ -51,7 +51,7 @@ season = SeasonConfig(
     crop_start_type="emergence", crop_end_type="earliest", max_duration=365,
 )
 env = Lintul3Env(
-    data_dir=Path("examples/envs/winterwheat"),
+    data_dir=Path("lintul3_gym/envs/data/winterwheat"),
     season=season,
     decision_interval=7,
     weather=WeatherConfig(

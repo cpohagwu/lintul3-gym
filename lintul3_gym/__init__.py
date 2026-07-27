@@ -22,6 +22,8 @@ try:
 except ImportError:
     pass
 
+__version__ = "0.1.0"
+
 __all__ = [
     "Lintul3Env",
     "RewardConfig",

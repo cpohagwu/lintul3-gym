@@ -126,7 +126,7 @@ class StandardPracticePolicy():
     17.07 g N/m² (=170.7 kg N/ha), the SP amount the paper reports (Table
     2/3) -- though the paper's own code applies that particular number as a
     single early "start-dump" dose rather than these three dates (see
-    `examples/envs/winterwheat/README.md` for why that makes this policy's
+    `lintul3_gym/envs/data/winterwheat/README.md` for why that makes this policy's
     yield an approximation of, not identical to, the paper's published
     numbers).
     """

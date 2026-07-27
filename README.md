@@ -16,7 +16,6 @@ wheat -- with their own tutorial notebooks (see [Examples](#examples)).
 
 ```bash
 pip install lintul3-gym
-pip install 'lintul3-gym[sb3,viz]'
 ```
 
 ## Quick start
@@ -72,13 +71,13 @@ season = SeasonConfig(
     crop_end=date(2007, 9, 1), crop_name="winter-wheat",
     crop_start_type="emergence", crop_end_type="earliest", max_duration=365,
 )
-env = Lintul3Env(data_dir="examples/envs/winterwheat", season=season, decision_interval=7)
+env = Lintul3Env(data_dir="lintul3_gym/envs/data/winterwheat", season=season, decision_interval=7)
 ```
 
 Two worked examples ship in this repo:
 
-- [`examples/envs/springwheat/`](examples/envs/springwheat) -- the bundled default (Netherlands,  2006).
-- [`examples/envs/winterwheat/`](examples/envs/winterwheat) -- winter wheat (Netherlands + France,  1990-2021), reproducing [Kallenberg et al. (2023)](https://doi.org/10.1017/eds.2023.28); see its  own `README.md` for full parameter provenance and a model-fidelity discussion.
+- [`lintul3_gym/envs/data/springwheat/`](lintul3_gym/envs/data/springwheat) -- the bundled default (Netherlands,  2006).
+- [`lintul3_gym/envs/data/winterwheat/`](lintul3_gym/envs/data/winterwheat) -- winter wheat (Netherlands + France,  1990-2021), reproducing [Kallenberg et al. (2023)](https://doi.org/10.1017/eds.2023.28); see its  own `README.md` for full parameter provenance and a model-fidelity discussion.
 
 For more LINTUL3-ready datasets, see [PCSE's own documentation](https://pcse.readthedocs.io/en/stable/) and [WUR-AI/PCSE-Gym](https://github.com/WUR-AI/PCSE-Gym) (the source of the winter-wheat set above) -- though most of PCSE-Gym's *other* crop configs are in WOFOST format (`YAMLCropDataProvider`/`CABOFileReader`), not this package's plain-text `PCSEFileReader` `.crop`/`.site`/`.soil` format, so they need translating rather than dropping in directly.
 
@@ -107,7 +106,7 @@ See `examples/nitrogen-springwheat/Tutorial-Lintul3gym.ipynb` and `examples/nitr
 | Example | What it shows |
 | --- | --- |
 | [`examples/nitrogen-springwheat/Tutorial-Lintul3gym.ipynb`](examples/nitrogen-springwheat/Tutorial-Lintul3gym.ipynb) | Full tutorial -- what LINTUL3/PCSE need as input, how `lintul3_gym` supplies it, and both bundled experiments (train+eval on one fixed season; train+eval across disjoint years/locations via NASA POWER). Ends with a guide to adapting the environment to a different crop. |
-| [`examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb`](examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb) + [`examples/envs/winterwheat/README.md`](examples/envs/winterwheat/README.md) | Reproduces Kallenberg et al. (2023)'s winter-wheat nitrogen-management experiment: NASA POWER weather, the paper's train/test locations and years, a Standard Practice baseline, and out-of-distribution climate testing (Netherlands vs. France). |
+| [`examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb`](examples/nitrogen-winterwheat/PaperRep-Lintul3gym.ipynb) + [`lintul3_gym/envs/data/winterwheat/README.md`](lintul3_gym/envs/data/winterwheat/README.md) | Reproduces Kallenberg et al. (2023)'s winter-wheat nitrogen-management experiment: NASA POWER weather, the paper's train/test locations and years, a Standard Practice baseline, and out-of-distribution climate testing (Netherlands vs. France). |
 
 ## How to cite
 
@@ -127,7 +126,7 @@ If you use `lintul3-gym` in your research, please cite it as:
 ```
 
 If you're using the winter-wheat example to reproduce Kallenberg et al. (2023)'s results, please
-also cite that paper -- see [`examples/envs/winterwheat/README.md`](examples/envs/winterwheat/README.md)
+also cite that paper -- see [`lintul3_gym/envs/data/winterwheat/README.md`](lintul3_gym/envs/data/winterwheat/README.md)
 for its citation, which is separate from citing this software.
 
 ## License
@@ -136,6 +135,6 @@ Apache-2.0 (see [`LICENSE`](LICENSE)). The design and economic convention of the
 are informed by the GPL-3.0 [PCSE-Gym](https://github.com/WUR-AI/PCSE-Gym) reference project.
 
 The winter-wheat example's data files and patch
-([`examples/envs/winterwheat/`](examples/envs/winterwheat)) are copied verbatim from PCSE-Gym and
+([`lintul3_gym/envs/data/winterwheat/`](lintul3_gym/envs/data/winterwheat)) are copied verbatim from PCSE-Gym and
 remain under its GPL-3.0-or-later license rather than this repository's Apache-2.0 license -- see
 that directory's `README.md` for details.

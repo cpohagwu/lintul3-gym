@@ -37,15 +37,21 @@ CROP_FEATURES = (
 WEATHER_FEATURES = ("IRRAD", "TMIN", "TMAX", "RAIN")
 
 
-def bundled_data_dir() -> Path:
-    """Return the installed spring-wheat data directory.
+def bundled_data_dir(name: str = "springwheat") -> Path:
+    """Return one of the installed, package-bundled data directories, by name.
+
+    Args:
+        name: Which bundled dataset to return -- e.g. ``"springwheat"`` (the
+            default) or ``"winterwheat"``, matching a subdirectory name under
+            ``lintul3_gym/envs/data/``.
 
     Returns:
-        Path: The ``lintul3_gym/envs/data/springwheat`` directory shipped inside the
-        installed package -- the default crop/site/soil/weather inputs used when
-        ``Lintul3Env`` is constructed with no ``data_dir``.
+        Path: The ``lintul3_gym/envs/data/<name>`` directory shipped inside the
+        installed package. ``bundled_data_dir()`` (no argument) is the default
+        crop/site/soil/weather inputs used when ``Lintul3Env`` is constructed
+        with no ``data_dir``.
     """
-    return Path(str(files("lintul3_gym.envs").joinpath("data/springwheat")))
+    return Path(str(files("lintul3_gym.envs").joinpath(f"data/{name}")))
 
 
 def _first_match(directory: Path, suffix: str) -> Path:
@@ -69,7 +75,7 @@ def resolve_paths(data_dir: str | Path | None, weather_config: WeatherConfig | N
 
     Crop, site, and soil parameter files are discovered by extension (see
     :func:`_first_match`) rather than a fixed filename, so any directory shaped like
-    ``examples/envs/springwheat`` or ``examples/envs/winterwheat`` works. The Excel
+    ``lintul3_gym/envs/data/springwheat`` or ``lintul3_gym/envs/data/winterwheat`` works. The Excel
     weather file (``nl1.xlsx``) is only required when ``weather_config`` calls for it
     (``source == "excel"``, the default when no ``weather_config`` is supplied at all);
     NASA POWER weather (``source == "nasa"``) never reads it.
@@ -141,7 +147,7 @@ class Lintul3Env(gym.Env[dict[str, np.ndarray], np.ndarray]):
     crop, weather, and management fields separate for auditability. Use
     :class:`lintul3_gym.sb3.FlattenObservation` for an MLP-oriented SB3 view.
     Any crop with a LINTUL3 parameter set works via ``data_dir``/``season`` -- see
-    ``examples/envs/springwheat`` (the default) and ``examples/envs/winterwheat`` for
+    ``lintul3_gym/envs/data/springwheat`` (the default) and ``lintul3_gym/envs/data/winterwheat`` for
     two worked examples.
 
     Args:
